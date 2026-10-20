@@ -26,6 +26,10 @@ const db = admin.firestore();
 // Middleware untuk menyajikan file statis dari folder 'public' (agar index.html bisa diakses di root '/')
 app.use(express.static(path.join(__dirname, '../public')));
 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
+});
+
 // Route Contoh: Mengambil Daftar Konten dari Firestore
 app.get('/api/posts', async (req, res) => {
   try {
